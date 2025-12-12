@@ -1,3 +1,4 @@
+//macro def print = System.out.println
 import java.io.*;
 public class macros{
   static String lines[];
@@ -11,13 +12,10 @@ public class macros{
     }
     lines = code.split("\n");
     for(int i=0;i<lines.length;i++){ 
-      if(lines[i].contains("@macro")){ 
-        resolveMacro(lines[i].substring(lines[i].indexOf("@macro")+7),i);
+      if(lines[i].indexOf("//macro")==0){ 
+        resolveMacro(lines[i].substring(lines[i].indexOf("//macro")+8),i);
       }
-    } 
-    /*for(int i = 0;i<lines.length;i++){
-      System.out.println(lines[i]);
-    }*/
+    }  
   }
   public static void resolveMacro(String line,int i){
     String macro = line.split(" ")[0];
@@ -27,7 +25,7 @@ public class macros{
         def(line.substring(4));
         break;
       default:
-        System.out.println("Unkown Macro at line: "+i+" "+macro);
+        print("Unkown Macro at line: "+i+"| "+macro);
         System.exit(0);
         break;
     }
@@ -37,7 +35,7 @@ public class macros{
     for(int i = 0;i<lines.length;i++){
       lines[i] = lines[i].replace(define[0].trim(), define[1].trim());
       if(lines[i]!="")
-      System.out.println(lines[i]);
+      print(lines[i]);
     }
   }
 }
