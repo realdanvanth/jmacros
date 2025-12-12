@@ -1,6 +1,8 @@
-//macro def print = System.out.println
+@macro def print = System.out.println
+@macro def PI = 3.14
+@macro def fuck = you
 import java.io.*;
-public class macros{
+class macros{
   static String lines[];
   public static void main(String args[])throws FileNotFoundException,IOException{
     BufferedReader br = new BufferedReader(new FileReader(args[0]));
@@ -12,10 +14,14 @@ public class macros{
     }
     lines = code.split("\n");
     for(int i=0;i<lines.length;i++){ 
-      if(lines[i].indexOf("//macro")==0){ 
-        resolveMacro(lines[i].substring(lines[i].indexOf("//macro")+8),i);
+      if(lines[i].indexOf("@macro")==0){ 
+        resolveMacro(lines[i].substring(lines[i].indexOf("@macro")+7),i);
       }
-    }  
+    }
+    for(int i = 0;i<lines.length;i++){
+      if(lines[i]!="")
+      print(lines[i]);
+    }
   }
   public static void resolveMacro(String line,int i){
     String macro = line.split(" ")[0];
@@ -34,8 +40,6 @@ public class macros{
     String define []= line.split("= "); 
     for(int i = 0;i<lines.length;i++){
       lines[i] = lines[i].replace(define[0].trim(), define[1].trim());
-      if(lines[i]!="")
-      print(lines[i]);
     }
   }
 }

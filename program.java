@@ -1,7 +1,9 @@
+@macro def PI = 3.14
 @macro def print = System.out.println
-public class Main{
+class program{
   public static void main(String args[])
   {
     print("hello world");
+    print(PI);
   }
 }
