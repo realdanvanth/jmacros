@@ -4,6 +4,6 @@ if javac test.java; then
     rm -rf test.java
     echo "build successfull... "
 else
-    echo "fail"
+    echo "build failed check your macros "
 fi
 

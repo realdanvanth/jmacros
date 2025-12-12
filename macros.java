@@ -1,6 +1,4 @@
 @macro def print = System.out.println
-@macro def PI = 3.14
-@macro def fuck = you
 import java.io.*;
 class macros{
   static String lines[];
